@@ -11,6 +11,8 @@ jQuery(function(){
     console.log(host);
     if(!email){ email = '';}
 
+    // host = "dennissuratna.com"
+
     var endpointUrl = 'https://staging02.pathdefender.com';
     var apiUrl = endpointUrl + '/rpc/ajax?do=lookup-site-status&jsoncallback=?&rand='+new Date().getTime()+'&host=' + encodeURIComponent(host)
 
@@ -21,28 +23,100 @@ jQuery(function(){
         var signupWindow = window.open(signupUrl, "_blank", "width=500 height=600 left=" + left + " top=" + top);
     });
 
+    // McAfee SECURE
     function renderSecurity(data){
+        var issuesFound = data['diagnosticsFoundIssues'] === 1;
+        var $security = jQuery("#security");
+        var secure = data['isSecure'] === 1
+        var inProgress = data['scanInProgress'] === 1
 
+        if(inProgress){
+            setStatusText($security, "Security Scan In Progress." );
+            spinIcon($security);
+        }else{
+            if(secure){
+                setStatusText($security, "All tests passed!" );
+                checkIcon($security);
+            }else{
+                setStatusText($security, "Security Problems!");
+                timesIcon($security);
+            }   
+        }
     }
 
     function renderCertificationTrustmark(data){
-
+        var $certification = jQuery("#certification");
+        var exceeded = data['maxHitsExceeded'] === 1;
+        if(exceeded){
+            setStatusText($certification, "Monthly Visitor Limit Reached.");
+            timesIcon($certification);
+        }else{
+            setStatusText($certification, "All good.");
+            checkIcon($certification);
+        }
     }
 
     function renderSearchHighlighting(data){
+        var pro = data['isPro'] === 1;
+        var $highlighting = jQuery("#highlighting");
 
+        if(pro){
+            setStatusText($highlighting, "Site is highlighted in Google, Yahoo, and Bing search results.");
+            checkIcon($highlighting);
+        }else{
+            pillGrey($highlighting);
+            setStatusText($highlighting, "Enable highlighting in Google, Yahoo, and Bing search results.");
+            timesIcon($highlighting);
+        }
     }
 
     function renderEngagementTurstmark(data){
+        var pro = data['isPro'] === 1;
+        var $engagement = jQuery("#engagement");
 
+        if(pro){
+            var installed = data['tmEngagementInstalled'] === 1;
+
+            if(installed){
+                setStatusText($engagement, "Active");
+                checkIcon($engagement);
+            }else{
+                setStatusText($engagement, "Not Installed");
+                timesIcon($engagement);
+            }
+        }else{
+            pillGrey($engagement);
+            setStatusText($engagement, "Enable the engagement trustmark to boost visitor confidence.");
+            timesIcon($engagement);
+        }
     }
 
+    // TrustedSite
     function renderSiteReviews(data){
-
+        
     }
 
     function renderSitemap(data){
+        var pro = data['isPro'] === 1;
+        var $sitemap = jQuery("#sitemap");
         
+        if(pro){
+            var createdDate = data['sitemapCreatedDate'];
+            var numPages = data['sitemapUrlCount'];
+
+            if(createdDate){
+                var dateStr = createdDate.split(" ")[0];
+                var d = new Date(dateStr);
+                var daysAgo = 0;
+
+                setStatusText($sitemap, 'Created <b class="days-ago">' + daysAgo + ' days ago</b>.  Contains <b class="num-pages">' + numPages + '</b> pages.');
+            }
+
+        }else{
+            pillGrey($sitemap);
+            setStatusText($sitemap, "Get your site in Google, Yahoo, Bing and more.");
+            timesIcon($sitemap);
+        }
     }
 
     function renderDiagnostic(data){
@@ -101,6 +175,13 @@ jQuery(function(){
         $el.find('.status-icon').html('<i class="fa fa-warning"></i>');
     }
 
+    function spinIcon($el){
+        $el.find('.status-icon').html("");
+        $el.find('.status-icon').html('<i class="fa fa-circle-o-notch fa-spin"></i>');
+    }
+
+
+
     function refresh(){
         jQuery.getJSON(apiUrl,function(data) {
             console.log("lookup-site-status");
@@ -111,6 +192,13 @@ jQuery(function(){
             if(status === 'none'){
                 $activationSection.show();
             }else{
+                renderSecurity(data);
+                renderCertificationTrustmark(data);
+                renderSearchHighlighting(data);
+                renderEngagementTurstmark(data);
+
+                renderSiteReviews(data);
+                renderSitemap(data);
                 renderDiagnostic(data);
                 renderProfile(data);
 

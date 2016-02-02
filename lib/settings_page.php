@@ -32,29 +32,44 @@ $endpointUrl = 'https://staging02.pathdefender.com';
 
         <div class="wrapper">
             <div id="content">
-                <div class="row row-toggle" data-toggle-key="mfes-security">
-                    <div class="row-title"><i class="fa fa-check"></i><b>Security</b></div>
-                    All tests passed!
+                <div class="row row-toggle" id="security">
+                    <div class="row-title">
+                        <span class="status-icon"></span>
+                        <b>Security</b>
+                    </div>
+
+                    <span class="status-text">
+                    </span>
                 </div>
 
-                <div class="row row-toggle" href-linked="1">
+                <div class="row row-toggle" href-linked="1" id="certification">
                     <a href="javascript:void(0);">Go Unlimited</a>
                     <div class="row-title"><i class="fa fa-check"></i><b>Certification Trustmark</b></div>
                     All Good
                 </div>
 
-                <div class="row lite" href-linked="1">
+                <div class="row lite" href-linked="1" id="highlighting">
                     <a href="javascript:void(0);">Learn More</a>
-                    <div class="row-title"><i class="fa fa-times"></i><b>Search Highlighting</b></div>
 
-                    <div class="pill pill-grey">Pro Feature</div> Enable highlighting in Google, Yahoo, and Bing search results.
+                    <div class="row-title">
+                        <span class="status-icon"></span>
+                        <b>Search Highlighting</b>
+                    </div>
+
+                    <div class="pill pill-grey" style="display: none;">Pro Feature</div>
+                    <span class="status-text">
+                    </span>
                 </div>
 
-                <div class="row lite" href-linked="1">
+                <div class="row lite" href-linked="1" id="engagement">
                     <a href="javascript:void(0);">Learn More</a>
-                    <div class="row-title"><i class="fa fa-times"></i><b>Engagement Trustmark</b></div>
+                    <div class="row-title">
+                        <i class="fa fa-times"></i>
+                        <b>Engagement Trustmark</b>
+                    </div>
 
-                    <div class="pill pill-grey">Pro Feature</div> Enable the engagement trustmark to boost visitor confidence.
+                    <div class="pill pill-grey" style="display: none;">Pro Feature</div>
+                    <span class="status-text"></span>
                 </div>
 
             </div>    
@@ -67,20 +82,25 @@ $endpointUrl = 'https://staging02.pathdefender.com';
 
         <div class="wrapper">
             <div id="content">
-                <div class="row" href="<?php echo $endpointUrl; ?>/user/site/ratings?siteId=2366096" href-linked="1">
+                <div class="row" href="<?php echo $endpointUrl; ?>/user/site/ratings?siteId=2366096" href-linked="1" id="reviews">
                     <a href="javascript:void(0);">View Details</a>
                     <div class="row-title"><i class="fa fa-check"></i><b>Site Reviews</b></div> 
+
                     <div class="dot-yellow"></div> No Reviews
                 </div>
 
-                <div class="row" href="<?php echo $endpointUrl; ?>/user/site/sitemap?siteId=982208" href-linked="1">
+                <div class="row" href="<?php echo $endpointUrl; ?>/user/site/sitemap?siteId=982208" href-linked="1" id="sitemap">
                     <a href="javascript:void(0);">View Details</a>
+
                     <div class="row-title">
-                        <i class="fa fa-check"></i>
+                        <span class="status-icon"></span>
                         <b>Sitemap</b>
                     </div>
 
-                    Created <b>3 days ago</b>.  Contains <b>59</b> pages.
+                    <div class="pill pill-grey" style="display: none;">Pro Feature</div>
+                    <span class="status-text">
+                        Created <b class="days-ago">3 days ago</b>.  Contains <b class="num-pages">59</b> pages.
+                    </span>
                 </div>
 
                 <div class="row" href="<?php echo $endpointUrl; ?>/user/site/diagnostics?siteId=982208" href-linked="1" id="diagnostics">
