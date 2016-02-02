@@ -33,7 +33,6 @@ $endpointUrl = 'https://staging02.pathdefender.com';
         <div class="wrapper">
             <div id="content">
                 <div class="row row-toggle" data-toggle-key="mfes-security">
-                    <i class="fa fa-angle-down"></i>
                     <div class="row-title"><i class="fa fa-check"></i><b>Security</b></div>
                     All tests passed!
                 </div>
