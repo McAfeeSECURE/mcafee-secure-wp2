@@ -75,20 +75,32 @@ $endpointUrl = 'https://staging02.pathdefender.com';
 
                 <div class="row" href="<?php echo $endpointUrl; ?>/user/site/sitemap?siteId=982208" href-linked="1">
                     <a href="javascript:void(0);">View Details</a>
-                    <div class="row-title"><i class="fa fa-check"></i><b>Sitemap</b></div>
+                    <div class="row-title">
+                        <i class="fa fa-check"></i>
+                        <b>Sitemap</b>
+                    </div>
+
                     Created <b>3 days ago</b>.  Contains <b>59</b> pages.
                 </div>
 
-                <div class="row" href="<?php echo $endpointUrl; ?>/user/site/diagnostics?siteId=982208" href-linked="1">
+                <div class="row" href="<?php echo $endpointUrl; ?>/user/site/diagnostics?siteId=982208" href-linked="1" id="diagnostics">
                     <a href="javascript:void(0);">View Details</a>
-                    <div class="row-title"><i class="fa fa-times"></i><b>Diagnostics</b></div>
-                    3 issues found.
+                    <div class="row-title">
+                        <span class="status-icon"></span>
+                        <b>Diagnostics</b>
+                    </div>
+                    <div class="pill pill-grey" style="display: none;">Pro Feature</div>
+                    <span class="status-text"></span>
                 </div>
 
-                <div class="row" href="<?php echo $endpointUrl; ?>/user/site/directory?siteId=982208" href-linked="1">
+                <div class="row" href="<?php echo $endpointUrl; ?>/user/site/directory?siteId=982208" href-linked="1" id="profile">
                     <a href="javascript:void(0);">Edit Profile</a>
-                    <div class="row-title"><i class="fa fa-check"></i><b>Website Profile</b></div>
-                    All good!
+                    <div class="row-title">
+                        <span class="status-icon"></span>
+                        <b>Website Profile</b>
+                    </div>
+
+                    <span class="status-text"></span>
                 </div>
             </div>    
         </div>
