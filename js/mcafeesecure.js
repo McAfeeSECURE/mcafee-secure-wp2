@@ -11,7 +11,7 @@ jQuery(function(){
     console.log(host);
     if(!email){ email = '';}
 
-    host = "dennissuratna.com";
+    // host = "wpa.v";
 
     var endpointUrl = 'https://staging02.pathdefender.com';
 
@@ -306,6 +306,7 @@ jQuery(function(){
                 renderDiagnostic(data);
                 renderProfile(data);
 
+                $activationSection.hide();
                 $dashboardSection.show();
             }
         });
