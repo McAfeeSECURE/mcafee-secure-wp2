@@ -4,28 +4,23 @@ defined( 'ABSPATH' ) OR exit;
 class Mcafeesecure {
 
     public static function activate(){
-        error_log("MFES: activate called");
         update_option('mcafeesecure_active', 1);
     }
 
     public static function install(){
-        error_log("MFES: install called");
         add_shortcode('mcafeesecure', 'Mcafeesecure::engagement_trustmark_shortcode');
         add_action('admin_menu', 'Mcafeesecure::admin_menus');
         add_action('wp_footer', 'Mcafeesecure::inject_code');
     }
 
     public static function deactivate(){
-        error_log("MFES: deactivate called");
         delete_option("mcafeesecure_active");
     }
 
     public static function uninstall(){
-        error_log("MFES: uninstall called");
     }
 
     public static function engagement_trustmark_shortcode($atts = array()) {
-        error_log("MFES: engagement_trustmark_shortcode called");
         $a = shortcode_atts(array(
             'width' => 90,
         ), $atts);
@@ -36,7 +31,6 @@ class Mcafeesecure {
     }
 
     public static function admin_menus(){
-        error_log("MFES: admin_menus called");
         add_menu_page(
             'McAfee SECURE', 
             'McAfee SECURE', 
@@ -51,8 +45,7 @@ class Mcafeesecure {
     }
 
     public static function inject_code(){
-        error_log("MFES: inject_code called");
-        
+
         echo <<<EOT
             <script type="text/javascript">
               (function() {
