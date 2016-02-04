@@ -7,6 +7,7 @@ $affiliate = '221269';
 $arrHost = parse_url(home_url('', $scheme = 'http'));
 $host = $arrHost['host'];
 $endpointUrl = 'https://staging02.pathdefender.com';
+
 ?>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <script src="<?php echo $jsFolder; ?>jquery.min.js"></script>

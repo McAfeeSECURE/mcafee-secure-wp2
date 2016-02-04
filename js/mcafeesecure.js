@@ -4,11 +4,9 @@ jQuery(function(){
     var $data = jQuery("#mcafeesecure-data");
 
     var host = $data.attr('data-host');
-    console.log(host);
     if(!host){ host = '';}
 
     var email = $data.attr('data-email');
-    console.log(host);
     if(!email){ email = '';}
 
     // host = "wpa.v";
@@ -27,7 +25,7 @@ jQuery(function(){
         var left = window.innerWidth / 2 - 250;
         var top = 200;
         var signupUrl = endpointUrl + "/app/wordpress2/signup?host=" + encodeURIComponent(host) + "&email=" + encodeURIComponent(email)
-        var signupWindow = window.open(signupUrl, "_blank", "width=500 height=600 left=" + left + " top=" + top);
+        var signupWindow = window.open(signupUrl, "_blank", "width=900 height=700 left=" + left + " top=" + top);
     });
 
     // McAfee SECURE
@@ -269,6 +267,10 @@ jQuery(function(){
 
     function spinIcon($el){
         $el.find('.status-icon').html('<i class="fa fa-circle-o-notch fa-spin"></i>');
+    }
+
+    function runLoadingAnimation($container, callback){
+
     }
 
     function reviewStars(v){

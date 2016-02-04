@@ -8,3 +8,7 @@
 #wpcontent{
     /*background-color: rgb(241,241,241);*/
 }
+
+a#mcafeesecure-activate-now:hover{
+    color: white !important;
+}

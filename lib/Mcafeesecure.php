@@ -18,35 +18,23 @@ class Mcafeesecure {
     }
 
     public static function ajax_get_data(){
-        error_log("ajax_get_data");
-        error_log(json_encode(get_option('mcafeesecure_data', "{}")));
-
-        echo json_encode(get_option('mcafeesecure_data', "{}"));
-        wp_die();
+        wp_send_json(get_option('mcafeesecure_data', array("empty"=>1)));
     }
 
     public static function ajax_save_data(){
-        error_log("ajax_save_data");
-        error_log(json_encode($_POST['data']));
-
-        echo json_encode(get_option('mcafeesecure_data', "{}"));
-        wp_die();
+        update_option('mcafeesecure_data', $_POST['data']);
+        wp_send_json(get_option('mcafeesecure_data', array("empty"=>1)));
     }
 
     public static function admin_onboarding($hook) {
-        error_log("admin_onboarding called");
-
         if( 'plugins.php' != $hook ) {
             return;
         }
-
-        error_log("admin_onboarding called 2");
-        error_log(plugins_url('/js/onboarding.js', WP_PLUGIN_DIR . '/mcafee-secure/mcafee-secure.php' ));
             
         wp_enqueue_script( 'mcafeesecure-onboarding-script', plugins_url('/js/onboarding.js', WP_PLUGIN_DIR . '/mcafee-secure/mcafee-secure.php' ), array('jquery') );
         wp_enqueue_script( 'mcafeesecure-jquery-ui-js', plugins_url('/js/bootstrap.min.js', WP_PLUGIN_DIR . '/mcafee-secure/mcafee-secure.php' ), array('jquery') );
         wp_enqueue_style( 'mcafeesecure-jquery-ui-css', plugins_url('/css/bootstrap.min.css', WP_PLUGIN_DIR . '/mcafee-secure/mcafee-secure.php' ) );
-        // wp_enqueue_style( 'mcafeesecure-override-css', plugins_url('/css/override.css', WP_PLUGIN_DIR . '/mcafee-secure/mcafee-secure.php' ) );
+        wp_enqueue_style( 'mcafeesecure-override-css', plugins_url('/css/override.css', WP_PLUGIN_DIR . '/mcafee-secure/mcafee-secure.php' ) );
 
         $mcafeesecure_ajax_object = array( 'ajax_url' => admin_url( 'admin-ajax.php' ), 'data' => get_option('mcafeesecure_data', "{}") );
 
@@ -55,10 +43,11 @@ class Mcafeesecure {
 
     public static function deactivate(){
         delete_option("mcafeesecure_active");
-        delete_option("mcafeesecure_data");
     }
 
     public static function uninstall(){
+        delete_option("mcafeesecure_active");
+        delete_option("mcafeesecure_data");
     }
 
     public static function engagement_trustmark_shortcode($atts = array()) {
