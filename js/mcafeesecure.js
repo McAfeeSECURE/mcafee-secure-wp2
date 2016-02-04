@@ -296,21 +296,28 @@ jQuery(function(){
             if(status === 'none'){
                 $activationSection.show();
             }else{
-                clearInterval(refreshInterval);
-
-                renderSecurity(data);
-                renderCertificationTrustmark(data);
-                renderSearchHighlighting(data);
-                renderEngagementTurstmark(data);
-
-                renderSiteReviews(data);
-                renderSitemap(data);
-                renderDiagnostic(data);
-                renderProfile(data);
-
-                $activationSection.hide();
-                $dashboardSection.show();
+                setTimeout(function(){
+                    clearInterval(refreshInterval);
+                    loadDashboard();
+                }, 500);
             }
+        });
+    }
+
+    function loadDashboard(){
+        jQuery.getJSON(apiUrl,function(data) {
+            renderSecurity(data);
+            renderCertificationTrustmark(data);
+            renderSearchHighlighting(data);
+            renderEngagementTurstmark(data);
+
+            renderSiteReviews(data);
+            renderSitemap(data);
+            renderDiagnostic(data);
+            renderProfile(data);
+
+            $activationSection.hide();
+            $dashboardSection.show();
         });
     }
 
