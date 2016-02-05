@@ -24,7 +24,7 @@ jQuery(function(){
     jQuery("#activate-now").click(function(){
         var left = window.innerWidth / 2 - 250;
         var top = 200;
-        var signupUrl = endpointUrl + "/app/wordpress2/signup?host=" + encodeURIComponent(host) + "&email=" + encodeURIComponent(email)
+        var signupUrl = endpointUrl + "/app/wordpress2/signup?host=" + encodeURIComponent(host) + "&email=" + encodeURIComponent(email) + "&aff=221269" + 
         var signupWindow = window.open(signupUrl, "_blank", "width=900 height=700 left=" + left + " top=" + top);
     });
 

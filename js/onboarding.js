@@ -1,7 +1,4 @@
 jQuery(function(){
-    console.log("Onboarding !!!!");
-    console.log(mcafeesecure_ajax_object);
-
     var obj = mcafeesecure_ajax_object;
 
     jQuery.post(obj.ajax_url, {action: 'mcafeesecure_get_data'}, function(data){
