@@ -6,7 +6,8 @@ $partner = 'wp-generic';
 $affiliate = '221269';
 $arrHost = parse_url(home_url('', $scheme = 'http'));
 $host = $arrHost['host'];
-$endpointUrl = 'https://staging02.pathdefender.com';
+// $endpointUrl = 'https://staging02.pathdefender.com';
+$endpointUrl = 'https://www.mcafeesecure.com';
 
 ?>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">

@@ -11,7 +11,8 @@ jQuery(function(){
 
     // host = "wpa.v";
 
-    var endpointUrl = 'https://staging02.pathdefender.com';
+    // var endpointUrl = 'https://staging02.pathdefender.com';
+    var endpointUrl = 'https://www.mcafeesecure.com';
 
     var apiUrl = endpointUrl + '/rpc/ajax?do=lookup-site-status&jsoncallback=?&rand='+new Date().getTime()+'&host=' + encodeURIComponent(host)
     var loginUrl = endpointUrl + "/login";
