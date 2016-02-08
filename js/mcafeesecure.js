@@ -9,10 +9,8 @@ jQuery(function(){
     var email = $data.attr('data-email');
     if(!email){ email = '';}
 
-    // host = "wpa.v";
-
-    // var endpointUrl = 'https://staging02.pathdefender.com';
-    var endpointUrl = 'https://www.mcafeesecure.com';
+    var endpointUrl = 'https://staging02.pathdefender.com';
+    // var endpointUrl = 'https://www.mcafeesecure.com';
 
     var apiUrl = endpointUrl + '/rpc/ajax?do=lookup-site-status&jsoncallback=?&rand='+new Date().getTime()+'&host=' + encodeURIComponent(host)
     var loginUrl = endpointUrl + "/login";
@@ -25,7 +23,7 @@ jQuery(function(){
     jQuery("#activate-now").click(function(){
         var left = window.innerWidth / 2 - 250;
         var top = 200;
-        var signupUrl = endpointUrl + "/app/wordpress2/signup?host=" + encodeURIComponent(host) + "&email=" + encodeURIComponent(email) + "&aff=221269";
+        var signupUrl = endpointUrl + "/app/partner2/signup?re=siteadded&host=" + encodeURIComponent(host) + "&email=" + encodeURIComponent(email) + "&aff=221269";
         var signupWindow = window.open(signupUrl, "_blank", "width=900 height=700 left=" + left + " top=" + top);
     });
 

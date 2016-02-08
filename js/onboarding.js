@@ -2,7 +2,7 @@ jQuery(function(){
     var obj = mcafeesecure_ajax_object;
 
     jQuery.post(obj.ajax_url, {action: 'mcafeesecure_get_data'}, function(data){
-        console.log("MFES: Get Data Callback");
+        console.log("MFES: Get Data");
         console.log(data);
 
         if(!data['completed_onboarding']){
@@ -12,7 +12,7 @@ jQuery(function(){
                 action: 'mcafeesecure_save_data',
                 data: { completed_onboarding: 1 }
             }, function(data){
-                console.log("MFES: Save Data Callback");
+                console.log("MFES: Save Data");
                 console.log(data);
             });
         }
@@ -24,9 +24,7 @@ jQuery(function(){
 
         var styleCss = "min-width: 210px; margin-left: 25px; border-radius: 0;";
         var buttonStyle = "color: #555;border-color: #ccc;background: #f7f7f7;-webkit-box-shadow: 0 1px 0 #ccc;box-shadow: 0 1px 0 #ccc; vertical-align: top; "
-
         var $item = jQuery( "div.wp-menu-name:contains('McAfee SECURE')" );
-        console.log($item.length);
 
         $item.popover({
             content: "You have installed <b>McAfee SECURE.</b> Please activate your account. <br/><br/><a id='mcafeesecure-activate-now' class='button button-primary' style='text-align: center; padding-top:4px;' href='/wp-admin/admin.php?page=mcafee-secure-settings&activate=1'>Activate Account</a>",
