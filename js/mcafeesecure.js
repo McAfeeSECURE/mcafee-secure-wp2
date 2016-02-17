@@ -9,9 +9,7 @@ jQuery(function(){
     var email = $data.attr('data-email');
     if(!email){ email = '';}
 
-    var endpointUrl = 'https://staging02.pathdefender.com';
-    // var endpointUrl = 'https://www.mcafeesecure.com';
-
+    var endpointUrl = 'https://www.mcafeesecure.com';
     var apiUrl = endpointUrl + '/rpc/ajax?do=lookup-site-status&jsoncallback=?&rand='+new Date().getTime()+'&host=' + encodeURIComponent(host)
     var loginUrl = endpointUrl + "/login";
     var certificationTrustmarkUrl = endpointUrl + "/user/site/trustmark";
